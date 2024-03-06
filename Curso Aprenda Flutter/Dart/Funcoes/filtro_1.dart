@@ -4,7 +4,7 @@ main() {
 
   for (var nota in notas) {
     if (nota >= 7) {
-      notasBoas.add(nota);
+      notasBoas.add(nota); // Adicionando valores dentro de uma outra lista.
     }
   }
 
