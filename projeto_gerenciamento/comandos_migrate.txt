@@ -1,0 +1,6 @@
+flask db init --> Esse comando inicializa o sistema de migrações no projeto.
+
+flask db migrate --> Compara seus models (SQLAlchemy) com o banco atual, e Ele não altera o banco ainda.
+ou: flask db migrate -m "criando tabela conta" por exemplo
+
+flask db upgrade --> Executa os scripts de migração no banco, aplicando as mudanças.
