@@ -1,10 +1,10 @@
-from api import db
+from api import db #ignore
 
 class Conta(db.Model):
     __tablename__ = 'conta'
 
     id = db.Column(db.Integer, primary_key = True, autoincrement=True, nullable=False)
-    name = db.Column(db.String(50), nullable=False)
+    nome = db.Column(db.String(50), nullable=False)
     resumo = db.Column(db.String(100), nullable=False)
     valor = db.Column(db.Float, nullable=False)
 
