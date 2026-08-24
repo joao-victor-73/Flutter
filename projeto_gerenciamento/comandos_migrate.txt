@@ -4,3 +4,7 @@ flask db migrate --> Compara seus models (SQLAlchemy) com o banco atual, e Ele n
 ou: flask db migrate -m "criando tabela conta" por exemplo
 
 flask db upgrade --> Executa os scripts de migração no banco, aplicando as mudanças.
+
+
+flask --app api db migrate -m "criar tabela usuario" -- esse comando funciona para migrar as criações de tabelas
+flask --app api db upgrade
