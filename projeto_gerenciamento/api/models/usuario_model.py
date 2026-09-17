@@ -11,4 +11,4 @@ class Usuario(db.Model):
     senha = db.Column(db.String(265), nullable=False)
 
     def  cripto_senha(self):
-        self.senha = pbkdf2_sha256(self.senha)
+        self.senha = pbkdf2_sha256.hash(self.senha)
