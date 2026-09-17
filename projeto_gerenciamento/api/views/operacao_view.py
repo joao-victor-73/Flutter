@@ -4,15 +4,18 @@ from api.schemas import operacao_schema
 from api.entidades import operacao
 from api.services import operacao_service, conta_service
 from api import api
+from flask_jwt_extended import jwt_required
+
 
 
 class OperacaoList(Resource):
-
+    @jwt_required
     def get(self):
         operacoes = operacao_service.listar_operacoes()
         os = operacao_schema.OperacaoSchema(many=True)
         return make_response(os.jsonify(operacoes), 201)
 
+    @jwt_required
     def post(self):
         os = operacao_schema.OperacaoSchema()
         validate = os.validate(request.json)
@@ -42,6 +45,7 @@ class OperacaoList(Resource):
 
 
 class OperacaoDetail(Resource):
+    @jwt_required
     def get(self, id):
         operacao = operacao_service.listar_operacao_id(id)
         if operacao is None:
@@ -49,6 +53,7 @@ class OperacaoDetail(Resource):
         os = operacao_schema.OperacaoSchema()
         return make_response(os.jsonify(operacao), 200)
 
+    @jwt_required
     def put(self, id):
         operacao_bd = operacao_service.listar_operacao_id(id)
 
@@ -80,7 +85,8 @@ class OperacaoDetail(Resource):
             resultado = operacao_service.atualizar_operacao(
                 operacao_bd, operacao_nova)
             return make_response(os.jsonify(resultado), 201)
-        
+
+    @jwt_required
     def delete(self, id):
         operacao = operacao_service.listar_operacao_id(id)
         if operacao is None:
